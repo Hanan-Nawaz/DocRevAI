@@ -38,7 +38,6 @@ def create_logger(
     # checking if directory is already created, if not creates one.
     Path(log_directory).mkdir(parents=True, exist_ok=True)
 
-
     log = logging.getLogger(current_file_name)
     log.setLevel(log_level)
     log.propagate = False
