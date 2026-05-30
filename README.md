@@ -53,10 +53,15 @@ Generated Response
 
 ### Development Tools
 
-* Git
-* GitHub
-* Jira
-* Pytest
+- uv
+- Git
+- GitHub
+- Jira
+- Pytest
+
+### Dependency Management
+
+This project uses **uv** for package management and virtual environment handling, providing faster dependency resolution and installation compared to traditional pip-based workflows.
 
 ## Project Structure
 
@@ -80,7 +85,9 @@ DocRevAI/
 │
 ├── logs/
 │
-├── requirements.txt
+├── pyproject.toml
+│
+├── uv.lock
 │
 └── README.md
 ```
@@ -90,55 +97,66 @@ DocRevAI/
 ### Clone Repository
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/Hanan-Nawaz/DocRevAI
 cd DocRevAI
+```
+
+### Install uv
+
+```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+or
+
+```bash
+pip3 install uv
 ```
 
 ### Create Virtual Environment
 
 ```bash
-python -m venv .venv
+uv venv
+```
+
+Activate environment:
+
+macOS/Linux:
+
+```bash
 source .venv/bin/activate
+```
+
+Windows:
+
+```bash
+.venv\Scripts\activate
 ```
 
 ### Install Dependencies
 
 ```bash
-pip install -r requirements.txt
-```
-
-### Install Ollama
-
-Download and install Ollama from:
-
-https://ollama.com
-
-Pull the required model:
-
-```bash
-ollama pull phi3:mini
+uv sync
 ```
 
 ## Running the Project
 
 ```bash
-python main.py
+uv run main.py
 ```
 
 ## Testing
 
-The project uses Pytest for unit and integration testing.
-
 Run all tests:
 
 ```bash
-pytest
+uv run pytest
 ```
 
-Run with coverage:
+Run tests with coverage:
 
 ```bash
-pytest --cov=docrevai
+uv run pytest --cov=docrevai
 ```
 
 ## Logging
